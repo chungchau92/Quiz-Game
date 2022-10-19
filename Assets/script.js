@@ -19,6 +19,7 @@ var hightScoreEL = document.querySelector('.hight-score');
 var listScoreEl= document.querySelector('.list-score');
 var btnClearEl=document.querySelector('.btn--clear');
 var btnBackEl=document.querySelector('.btn--back');
+var scoreEl = document.querySelector('.score');
 var questions = [
     { question: "Commonly used data types DO NOT include:", answers: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"], correctAnswer: "3. Alerts" },
     { question: "The condition of an if/else statement is enclosed with ______:", answers: ["1. Quotes", "2. Curly Brackets", "3. Parenthesis", "4. Square Brackets"], correctAnswer: "3. Parenthesis" },
@@ -70,8 +71,13 @@ answerWrapEL[0].addEventListener('click',function(event) {
             footerEl.innerHTML="Correct!!!"
         }else {
             // if answer is wrong time -10s
-            timeleft -= 10;
             footerEl.innerHTML="Wrong!!!"
+            timeleft -= 10;
+            if(timeleft<0){
+                timeleft=0
+                endQuiz();
+                return
+            }
         }
         footerEl.style.display='Block';
 
@@ -105,6 +111,7 @@ function storeUser(){
 
 
 function renderScore() {
+    listScoreEl.textContent=''
     for(var i=0; i<initUser.length;i++) {
         var ScoreItem = document.createElement('li');
         ScoreItem.textContent=initUser[i]
@@ -120,7 +127,7 @@ btnSubmitEL.addEventListener('click',function() {
     inforUserEL[0].setAttribute('style','display:none')
     footerEl.setAttribute('style','display:none');
     hightScoreEL.setAttribute('style','display:block');
-    
+    inputEL.value=''
 });
 
 if(!localStorage.getItem('User')) {
@@ -137,7 +144,8 @@ if(!localStorage.getItem('User')) {
         if(timeleft > 0){
             timeleft--
             return countdownEL.innerHTML= timeleft;
-        } else {
+        } else if(timeleft<=0){
+            timeleft=0
             endQuiz()
         }
     },1000);
@@ -157,4 +165,15 @@ btnBackEl.addEventListener('click',function() {
     hightScoreEL.style.display='none'
     contentEL[0].style.display="block"
     contentEL[0].dataset.state='visible'
+    listScoreEl.textContent=''
+})
+
+// view hight Score
+scoreEl.onclick = (function() {
+    hightScoreEL.setAttribute('style','display:block');
+    if(contentState==='visible'){
+        contentEL[0].style.display="none"
+        contentEL[0].dataset.state='hidden'
+    }
+    renderScore()
 })
