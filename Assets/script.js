@@ -29,6 +29,7 @@ var questions = [
 ];
 
 function startQuiz () {
+    scoreEl.style.pointerEvents='none'
     countdown();
     if(contentState==='visible'){
         contentEL[0].style.display="none"
@@ -166,6 +167,8 @@ btnBackEl.addEventListener('click',function() {
     contentEL[0].style.display="block"
     contentEL[0].dataset.state='visible'
     listScoreEl.textContent=''
+    scoreEl.style.pointerEvents='auto'
+
 })
 
 // view hight Score
