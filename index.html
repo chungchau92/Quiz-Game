@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="header">
+                <a class="score">View high scores</a>
+                <div class="time">Time:
+                    <span class="countdown">0</span>
+                </div>
+            </div>
+            <div class="content" data-state="visible">
+                <h1 class="content__heading">Coding Quiz Challenge</h1>
+                <div class="content__info">try to answer the following code-related questions within the time limit.<br>
+                    keep in mid the incorrect answers will penalize your score/time<br>
+                    by ten seconds
+                </div>
+                <button class="btn--start">Start Quiz</button>
+            </div>
+            <div class="question-wrap">
+                <!-- <h1 class="question">Commonly used data types DO NOT include:</h1> -->
+                <div class="inforUser" style="display: none;">
+                    <h1>All done!!!!!!</h1>
+                    <p>Your final score is <span class="currentTime"></span></p>
+                    <p>Enter initials: 
+                        <input type="text" class="inputUser">
+                        <button class="btnSubmit">Submit</button>
+                    </p>
+                </div>
+                <div class="answer-wrap">
+                    <!-- <button class="answer">Commas</button>
+                    <button class="answer">Curly Brackets</button>
+                    <button class="answer">Quotes</button>
+                    <button class="answer">Parenthesis</button> -->
+                    
+                </div>
+                <div class="hight-score" style="display: none;">
+                    <h1>High Score!!!!</h1>
+                    <ol class="list-score"></ol>
+                    <div class="hight-score__btn">
+                        <button class="btn--back">Go back</button>
+                        <button class="btn--clear">Clear hight score</button>
+                    </div>
+                </div>
+                <div id="footer" class="footer" ></div>
+            </div>
+
+        </div>
+        
+    </div>
+<script src="./Assets/script.js"></script>
+</body>
+</html>
